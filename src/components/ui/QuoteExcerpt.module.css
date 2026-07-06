@@ -1,0 +1,29 @@
+.excerpt {
+  margin: 0;
+  padding: 10px 12px 10px 14px;
+  border-left: 2px solid var(--accent-soft-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.83rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.icon {
+  color: var(--accent-hover);
+  opacity: 0.8;
+  margin-bottom: -2px;
+}
+
+.source {
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

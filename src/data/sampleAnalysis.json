@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "appName": "Spotify Review Analyzer",
+    "generatedAt": "2026-07-03T00:00:00Z",
+    "analysisDate": "July 3, 2026",
+    "datasetSize": 4544,
+    "sources": ["Google Play Store", "Apple App Store", "Hacker News / Spotify Community"],
+    "model": "Pre-generated offline analysis (bundled demo dataset, no live API calls)",
+    "dateRange": { "earliest": "2020-01-01", "latest": "2026-07-02" },
+    "notes": "Bundled demonstration dataset derived from a real anonymized review analysis performed for a graduate Product Management research project. Upload your own structured analysis JSON to replace it."
+  },
+  "painPoints": [
+    {
+      "id": "pp-ad-density",
+      "title": "Free-Tier Ad Load Has Reached Breaking Point",
+      "description": "The most repeated signal across the entire dataset, present in every source and rating cohort. Users aren't objecting to ads existing, they're objecting to density: 2-5 unskippable ads after every 1-2 songs.",
+      "severity": "Very High",
+      "frequency": "Very High",
+      "affectedSegment": "Frustrated Free-Tier Users",
+      "quoteIds": ["q1", "q2", "q3"]
+    },
+    {
+      "id": "pp-paywall",
+      "title": "Premium Paywall Resentment on Core Playback Controls",
+      "description": "Users feel that fundamental playback features, selecting a specific song, playing a playlist in order, and unlimited skips, are locked behind Premium. This is framed as a betrayal rather than a business disagreement.",
+      "severity": "Very High",
+      "frequency": "High",
+      "affectedSegment": "Frustrated Free-Tier Users",
+      "quoteIds": ["q4", "q5"]
+    },
+    {
+      "id": "pp-performance",
+      "title": "Regression in App Performance After Updates",
+      "description": "Performance degradation cited across both app stores, tied to recent updates (v9.1.60). Symptoms include blank screens, crashes mid-song, widget failure, GPS conflicts, and memory issues on large playlists.",
+      "severity": "High",
+      "frequency": "High",
+      "affectedSegment": "Premium Power Users",
+      "quoteIds": ["q6", "q7", "q8"]
+    },
+    {
+      "id": "pp-shuffle",
+      "title": "Shuffle Algorithm Is Deeply Mistrusted",
+      "description": "One of the most discussed features, almost entirely negative. Users report that shuffle plays the same 100-150 songs repeatedly regardless of library size, eroding trust in the wider recommendation engine.",
+      "severity": "High",
+      "frequency": "High",
+      "affectedSegment": "Premium Power Users",
+      "quoteIds": ["q9", "q10", "q11"]
+    },
+    {
+      "id": "pp-paternalism",
+      "title": "Algorithm Paternalism — \"Stop Telling Me What to Like\"",
+      "description": "Users object to Spotify's shift from user-driven navigation to algorithmic curation by default. The removal of Browse and What's New is cited repeatedly by long-tenured, high-engagement users.",
+      "severity": "High",
+      "frequency": "Medium-High",
+      "affectedSegment": "Premium Power Users",
+      "quoteIds": ["q12", "q13", "q14"]
+    },
+    {
+      "id": "pp-support",
+      "title": "Human Customer Support Is Effectively Unavailable",
+      "description": "Long-tenured users losing access to years-old playlists or accounts report an all-bot support experience with no human escalation path, generating active brand damage.",
+      "severity": "Medium-High",
+      "frequency": "Medium",
+      "affectedSegment": "Premium Power Users",
+      "quoteIds": ["q20"]
+    }
+  ],
+  "userSegments": [
+    {
+      "id": "seg-free-tier",
+      "name": "Frustrated Free-Tier Users",
+      "description": "Mobile-first, price-sensitive listeners whose primary pain is ad density and skip limits.",
+      "keySignal": "Largest churn risk",
+      "size": "Large",
+      "riskLevel": "High",
+      "quoteIds": ["q1", "q4"]
+    },
+    {
+      "id": "seg-power-users",
+      "name": "Premium Power Users",
+      "description": "Multi-device, playlist curators with 3-8 year tenure who generate Spotify's highest lifetime value.",
+      "keySignal": "Highest LTV, but showing erosion signals",
+      "size": "Medium",
+      "riskLevel": "High",
+      "quoteIds": ["q9", "q12"]
+    },
+    {
+      "id": "seg-casual",
+      "name": "Casual Background Listeners",
+      "description": "Use Spotify as ambient audio for commute, sleep, or work, with low skip intent and low feedback volume.",
+      "keySignal": "High DAU, low feedback",
+      "size": "Large",
+      "riskLevel": "Low",
+      "quoteIds": ["q19"]
+    },
+    {
+      "id": "seg-podcast",
+      "name": "Podcast-First Users",
+      "description": "Want accurate resume position and in-order episode playback; increasingly evaluating Apple Podcasts as an alternative.",
+      "keySignal": "At risk of platform switching",
+      "size": "Medium",
+      "riskLevel": "Medium",
+      "quoteIds": []
+    },
+    {
+      "id": "seg-audiophile",
+      "name": "Audiophile / Catalog-Purist",
+      "description": "A small but vocal Hacker News-adjacent cohort wanting lossless audio, original recordings, and Linux parity.",
+      "keySignal": "Small but influential",
+      "size": "Small",
+      "riskLevel": "Low",
+      "quoteIds": ["q18"]
+    },
+    {
+      "id": "seg-fandom",
+      "name": "Fan / Artist-Devotion Users",
+      "description": "K-pop and stan-culture listeners whose repeat listening is intentional and tied to fan participation rituals.",
+      "keySignal": "High engagement, underserved by discovery tools",
+      "size": "Medium",
+      "riskLevel": "Medium",
+      "quoteIds": []
+    },
+    {
+      "id": "seg-aspirational",
+      "name": "Price-Sensitive Aspirational",
+      "description": "Love the product and want Premium, but can't currently justify the cost. The best upsell candidates if pricing friction is reduced.",
+      "keySignal": "Best upsell candidates",
+      "size": "Medium",
+      "riskLevel": "Medium",
+      "quoteIds": ["q5"]
+    }
+  ],
+  "listeningBehaviors": [
+    {
+      "id": "lb-commute",
+      "title": "Commute & Driving",
+      "description": "A dominant daily-use context; GPS conflict bugs corroborate heavy in-car and transit usage.",
+      "context": "Mobile, outdoors, hands-free",
+      "evidence": "\"great for the metro route ride\" plus recurring GPS/audio conflict bug reports",
+      "quoteIds": []
+    },
+    {
+      "id": "lb-background",
+      "title": "Background & Lock-Screen Listening",
+      "description": "Audio continues while the phone is locked or the app is backgrounded; unexpected auto-stop on lock screen is a top 1-star trigger.",
+      "context": "Passive, multitasking",
+      "evidence": "Lock-screen auto-stop bug reports concentrated in 1-star reviews",
+      "quoteIds": []
+    },
+    {
+      "id": "lb-work-study",
+      "title": "Work & Study Focus",
+      "description": "Music used as a concentration aid during work or study sessions, typically via mood or focus playlists.",
+      "context": "Focus, low-interaction",
+      "evidence": "\"Listening to music really helps while doing work\"",
+      "quoteIds": []
+    },
+    {
+      "id": "lb-sleep",
+      "title": "Sleep & Relaxation",
+      "description": "Users fall asleep to curated sleep or ambient playlists, valuing reliability of continuous, uninterrupted playback overnight.",
+      "context": "Nightly ritual, low-attention",
+      "evidence": "\"I use Spotify to listen to sleep music every night to help my brain relax\"",
+      "quoteIds": ["q19"]
+    },
+    {
+      "id": "lb-curation",
+      "title": "Large-Scale Playlist Curation",
+      "description": "Power users maintain playlists of 500-2,000+ songs, which is precisely the scale at which the shuffle bug becomes most visible.",
+      "context": "High-effort, long-term investment",
+      "evidence": "Multiple reports of 500+ song playlists exposing shuffle repetition",
+      "quoteIds": ["q11"]
+    },
+    {
+      "id": "lb-cross-device",
+      "title": "Cross-Device Listening",
+      "description": "Chromecast, Bluetooth, car systems, and TV are common playback targets; cross-device bugs disproportionately affect Premium churners.",
+      "context": "Multi-surface continuity",
+      "evidence": "Recurring device hand-off and casting bug reports from tenured users",
+      "quoteIds": []
+    },
+    {
+      "id": "lb-fandom",
+      "title": "Fan & Artist-Devotion Listening",
+      "description": "K-pop and stan-culture fans stream specific artists daily as an intentional act of fan participation, not passive discovery.",
+      "context": "Ritualized, intentional repetition",
+      "evidence": "Daily-streaming behavior tied to fan participation and chart support",
+      "quoteIds": []
+    },
+    {
+      "id": "lb-podcast-music",
+      "title": "Podcasts and Music as a Combined Daily Habit",
+      "description": "Podcasts are mentioned positively alongside music listening, suggesting a blended daily audio routine rather than separate use cases.",
+      "context": "Habitual, multi-format",
+      "evidence": "Positive podcast mentions cluster alongside music-listening feedback",
+      "quoteIds": []
+    }
+  ],
+  "recommendationProblems": [
+    {
+      "id": "rp-echo-chamber",
+      "title": "Algorithm Echo Chamber",
+      "description": "Radio, Home, and autoplay recycle familiar artists; users cannot escape their own play-history footprint no matter how long they use the app.",
+      "frequency": "Very High",
+      "impact": "Erodes discovery value for the highest-tenure, highest-LTV cohort",
+      "quoteIds": ["q12", "q17"]
+    },
+    {
+      "id": "rp-broken-shuffle",
+      "title": "Broken Shuffle on Large Libraries",
+      "description": "Shuffle on libraries of 300-2,000+ tracks repeats roughly the same 100 songs, blocking rediscovery of a user's own saved catalog.",
+      "frequency": "Very High",
+      "impact": "Breaks trust in the entire recommendation stack, not just shuffle",
+      "quoteIds": ["q9", "q10", "q11"]
+    },
+    {
+      "id": "rp-ignored-feedback",
+      "title": "\"Not Interested\" Feedback Is Ignored",
+      "description": "Marking a track or artist as not interested has no visible or lasting effect; the same content resurfaces almost immediately.",
+      "frequency": "High",
+      "impact": "Teaches users that feedback signals are pointless, reducing future engagement with them",
+      "quoteIds": ["q15"]
+    },
+    {
+      "id": "rp-no-intent-browsing",
+      "title": "No Intent-Based Exploration Surface",
+      "description": "Removal of the Browse tab eliminated the only non-algorithmic path to genre-, mood-, or era-driven discovery.",
+      "frequency": "High",
+      "impact": "Users have no self-directed way to escape the algorithm's assumptions",
+      "quoteIds": ["q13", "q14"]
+    },
+    {
+      "id": "rp-static-home",
+      "title": "Static Home Feed",
+      "description": "The same recommendation cards persist for days at a time, giving users no daily trigger to explore something new.",
+      "frequency": "Medium-High",
+      "impact": "Reduces daily re-engagement with the discovery surface specifically",
+      "quoteIds": []
+    },
+    {
+      "id": "rp-playlist-injection",
+      "title": "Songs Injected Into Personal Playlists",
+      "description": "Users report recommended tracks being inserted directly into playlists they curated themselves, without a clear opt-in.",
+      "frequency": "Medium-High",
+      "impact": "Damages trust in the integrity of user-owned playlists",
+      "quoteIds": ["q16"]
+    },
+    {
+      "id": "rp-recently-played",
+      "title": "No Way to Remove Items From Recently Played",
+      "description": "Users have requested the ability to remove entries from Recently Played for several years, and it continues to feed downstream recommendations.",
+      "frequency": "Medium-High",
+      "impact": "Skews personalization inputs with accidental or one-off plays",
+      "quoteIds": []
+    }
+  ],
+  "opportunityAreas": [
+    {
+      "id": "op-free-tier-redesign",
+      "title": "Free-Tier Value Redesign",
+      "description": "Introduce a tiered ad-value exchange, or a low-cost no-ads tier, that keeps the song-selection restriction. Reframe ads from a punishment into a fair exchange.",
+      "priority": "High",
+      "aiAngle": "Dynamic ad-load pacing personalized to session length and skip behavior",
+      "quoteIds": ["q1", "q3"]
+    },
+    {
+      "id": "op-shuffle-transparency",
+      "title": "Shuffle Transparency & Full-Library Coverage",
+      "description": "Offer a simple toggle between Truly Random, Smart Mix, and Discovery Mode with visible explanations, and fix the 100-song repeat loop on large libraries.",
+      "priority": "High",
+      "aiAngle": "Embedding-based diversity scoring guarantees breadth without sacrificing perceived randomness",
+      "quoteIds": ["q9", "q10"]
+    },
+    {
+      "id": "op-intent-discovery",
+      "title": "Genre / Mood / Era Intent Discovery Surface",
+      "description": "Replace or supplement Browse with an intent layer users can initiate directly, such as \"90s post-grunge,\" instead of only receiving algorithm-decided picks.",
+      "priority": "High",
+      "aiAngle": "LLM maps natural-language intent to genre, era, and mood embeddings, filtering out already-played artists",
+      "quoteIds": ["q13", "q14", "q17"]
+    },
+    {
+      "id": "op-signal-infrastructure",
+      "title": "Persistent User Signal Infrastructure",
+      "description": "Make \"not interested,\" \"hide this artist,\" and \"remove from recently played\" visibly and persistently affect the experience, with an explicit confirmation shown to the user.",
+      "priority": "High",
+      "aiAngle": "Reinforcement signal fed back into session-level ranking in real time with a visible re-rank explanation",
+      "quoteIds": ["q15", "q16"]
+    },
+    {
+      "id": "op-context-modes",
+      "title": "Listening Context Mode Presets",
+      "description": "A Context Mode (Sleep, Focus, Drive, Social) that adjusts playback behavior automatically for the moment, without manual playlist curation.",
+      "priority": "Medium",
+      "aiAngle": "Context inferred from time, motion, and connected device, with a one-tap override",
+      "quoteIds": ["q19"]
+    },
+    {
+      "id": "op-library-ux",
+      "title": "Library UX Overhaul for Power Users",
+      "description": "Alphabetical jump-scroll in Liked Songs, multi-playlist add-to, and working drag-and-drop reorder on mobile: table-stakes features for the highest-LTV cohort.",
+      "priority": "Medium",
+      "aiAngle": "Not AI-driven; a foundational UX investment that de-risks the power-user segment",
+      "quoteIds": []
+    },
+    {
+      "id": "op-offline-first",
+      "title": "Offline-First Architecture",
+      "description": "Serve local cache immediately and sync in the background instead of requiring an internet check before playing already-downloaded content.",
+      "priority": "Medium",
+      "aiAngle": "Predictive pre-caching of likely-next tracks based on context and history",
+      "quoteIds": []
+    },
+    {
+      "id": "op-release-digest",
+      "title": "AI-Curated Release Digest",
+      "description": "A weekly \"New from artists in your orbit\" digest that expands followed artists using graph proximity to surface adjacent new releases, not just direct follows.",
+      "priority": "Medium",
+      "aiAngle": "Graph-proximity expansion plus an LLM-written summary of why each release was surfaced",
+      "quoteIds": []
+    }
+  ],
+  "representativeQuotes": [
+    {
+      "id": "q1",
+      "text": "Great for finding any music you want but I'm genuinely getting 5 minute ads after every single song, seriously I can't even enjoy this app anymore.",
+      "source": "Google Play Store",
+      "rating": 1,
+      "tag": "Ad Density"
+    },
+    {
+      "id": "q2",
+      "text": "We can't even listen to two songs in a row without three ads. Five ads at once? Are you guys crazy?",
+      "source": "Apple App Store",
+      "rating": 1,
+      "tag": "Ad Density"
+    },
+    {
+      "id": "q3",
+      "text": "I've been using it since 2020 and I'm genuinely disappointed. 3 x 30 second unskippable ads? Nahhh.",
+      "source": "Google Play Store",
+      "rating": 2,
+      "tag": "Ad Density"
+    },
+    {
+      "id": "q4",
+      "text": "It's just a cruel thing to force customers to buy Premium just to play a list of songs in order.",
+      "source": "Google Play Store",
+      "rating": 1,
+      "tag": "Paywall"
+    },
+    {
+      "id": "q5",
+      "text": "Bro why do you want me to get Premium... I cannot skip more than 6 times or I cannot play a specific part of a song without getting Premium.",
+      "source": "Apple App Store",
+      "rating": 2,
+      "tag": "Paywall"
+    },
+    {
+      "id": "q6",
+      "text": "You've destroyed your app and soon your business with AI dragging all load times into the mud. A barely usable service.",
+      "source": "Google Play Store",
+      "rating": 1,
+      "tag": "Performance"
+    },
+    {
+      "id": "q7",
+      "text": "This disco ball update is making the app nearly unusable. Speed and performance dropped dramatically.",
+      "source": "Apple App Store",
+      "rating": 1,
+      "tag": "Performance"
+    },
+    {
+      "id": "q8",
+      "text": "The new bug is shutting down my GPS and Spotify at the same time and I am a daily driver.",
+      "source": "Google Play Store",
+      "rating": 1,
+      "tag": "Performance"
+    },
+    {
+      "id": "q9",
+      "text": "Slow UI. Horrible 'shuffle,' it replays the same 100 or so songs.",
+      "source": "Google Play Store",
+      "rating": 2,
+      "tag": "Shuffle"
+    },
+    {
+      "id": "q10",
+      "text": "Change the shuffle algorithm back to the old one from like a year ago, when it was actually random.",
+      "source": "Apple App Store",
+      "rating": 2,
+      "tag": "Shuffle"
+    },
+    {
+      "id": "q11",
+      "text": "I made a 500 song playlist and discovered that their 'shuffle' was actually not random. Or if it was a shuffle algorithm, it was a bad one.",
+      "source": "Hacker News / Spotify Community",
+      "rating": null,
+      "tag": "Shuffle"
+    },
+    {
+      "id": "q12",
+      "text": "Spotify used to be all about the user discovering new music and artists. Now it's just an algorithm that tries to tell me what I should like.",
+      "source": "Google Play Store",
+      "rating": 2,
+      "tag": "Discovery"
+    },
+    {
+      "id": "q13",
+      "text": "Breaking out of the algo to find new music can be such a chore.",
+      "source": "Apple App Store",
+      "rating": 3,
+      "tag": "Discovery"
+    },
+    {
+      "id": "q14",
+      "text": "Browse has disappeared, which used to provide some fantastic suggestions and new music.",
+      "source": "Google Play Store",
+      "rating": 3,
+      "tag": "Discovery"
+    },
+    {
+      "id": "q15",
+      "text": "Saying you're 'not interested' does nothing. It'll be right back.",
+      "source": "Apple App Store",
+      "rating": 2,
+      "tag": "Recommendation Feedback"
+    },
+    {
+      "id": "q16",
+      "text": "Lots of annoying songs coming into my playlists randomly.",
+      "source": "Google Play Store",
+      "rating": 2,
+      "tag": "Recommendation Feedback"
+    },
+    {
+      "id": "q17",
+      "text": "It used to help me discover new music. Now it just plays what I already know.",
+      "source": "Google Play Store",
+      "rating": 3,
+      "tag": "Discovery"
+    },
+    {
+      "id": "q18",
+      "text": "Usually 50% of the played media comes from cache since users play the same songs repeatedly.",
+      "source": "Hacker News / Spotify Community",
+      "rating": null,
+      "tag": "Listening Behavior"
+    },
+    {
+      "id": "q19",
+      "text": "I use Spotify to listen to sleep music every night to help my brain relax.",
+      "source": "Apple App Store",
+      "rating": 5,
+      "tag": "Listening Behavior"
+    },
+    {
+      "id": "q20",
+      "text": "There is no customer help. If you try to talk to them it's all bots.",
+      "source": "Google Play Store",
+      "rating": 1,
+      "tag": "Support"
+    }
+  ]
+}

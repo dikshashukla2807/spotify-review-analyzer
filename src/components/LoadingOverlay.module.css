@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 90px 24px;
+  text-align: center;
+}
+
+.equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 56px;
+}
+
+.bar {
+  width: 8px;
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent-hover), var(--accent-dark));
+  animation: bounce 0.9s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.message {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  min-height: 1.4em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}

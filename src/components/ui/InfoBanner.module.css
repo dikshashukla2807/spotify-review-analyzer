@@ -1,0 +1,37 @@
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.banner p {
+  margin: 0;
+}
+
+.info {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft-border);
+  color: #d9f7e4;
+}
+
+.info svg {
+  color: var(--accent-hover);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.warning {
+  background: var(--warning-soft);
+  border: 1px solid rgba(242, 199, 68, 0.35);
+  color: #fbeec2;
+}
+
+.warning svg {
+  color: var(--warning);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
